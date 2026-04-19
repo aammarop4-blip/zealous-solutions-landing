@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Arial, sans-serif, ui-sans-serif, system-ui;
+  --font-display: "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-obsidian: #05070a;
+  --color-deep-blue: #0b0f19;
+  --color-gold: #D4AF37;
+  --color-cyan: #ffffff;
+  --color-text-muted: #8e9299;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-obsidian text-slate-300 antialiased font-sans;
+    background-image: 
+      radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-white tracking-tight;
+  }
+}
+
+.zealous-glass {
+  @apply bg-glass backdrop-blur-3xl border border-glass-border;
+}
+
+.zealous-card {
+  @apply bg-[#0b0f19]/80 border border-white/10 rounded-xl transition-all duration-300;
+}
+
+.zealous-button-primary {
+  @apply bg-gold text-obsidian px-6 py-3 font-bold uppercase tracking-widest transition-all active:scale-95 text-[12px];
+}
+
+.zealous-button-secondary {
+  @apply border border-cyan text-cyan px-6 py-3 font-bold uppercase tracking-widest hover:bg-cyan/10 transition-all active:scale-95 text-[12px];
+}
+
+.zealous-gradient-text-hero {
+  @apply text-transparent bg-clip-text bg-gradient-to-b from-white to-[#888];
+}
+
+.zealous-gradient-gold {
+  @apply text-transparent bg-clip-text bg-gold;
+  -webkit-text-fill-color: #D4AF37;
+}
+
+.hero-video-container {
+  @apply absolute inset-0 w-full h-full z-0 pointer-events-none;
+}
+
+.hero-video-container iframe {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77777778vh] h-[56.25vw] min-w-full min-h-full;
+}
+
+/* Custom transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
